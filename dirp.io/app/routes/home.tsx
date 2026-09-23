@@ -1,5 +1,6 @@
 import type { Route } from "./+types/home";
 import { Welcome } from "../welcome/welcome";
+import React from "react";
 
 export function meta({}: Route.MetaArgs) {
 	return [
@@ -8,18 +9,37 @@ export function meta({}: Route.MetaArgs) {
 	];
 }
 
-function StudentRecord(){
-	let students=[];
-	function addStudent(){
-		//const name=prompt("Enter the student name");
-		students.add("lorem ipsum");
-	}
+function pickStudent({list}){
+	
+}
+
+function studentEntry({student, students}){
+	
 	return (
 	<>
+		<li key={student}>{student}<button onClick={students}>delete</button></li>
+	</>);
+}	
+
+function StudentRecord(){
+	const [students, setStudents] = React.useState([]);
+	const [name, setName] = React.useState('');
+
+	function addStudent(){
+		const newRecord=students.concat(name);
+		setStudents(newRecord);
+		setName('');
+	}
+
+	function delStudent(studentID){
+		const newRecord=students.filter((student) => student.id !== studentID)
+	return (
+	<>
+		<button onClick={addStudent}>Add Student</button>
+		<input type="text" value={name} onChange={e => setName(e.target.value)} />
 		<ul>
 			{students.map((student)=> <li key={student}>{student}</li>)}
 		</ul>
-		<button onClick={addStudent()}>Add Student</button>
 	</>);
 }
 export default function Home() {
