@@ -4,6 +4,7 @@ This project is a prototype which is intended to assist teachers who like to cal
 
 Installation and start up:
 open the terminal and type 'git clone https://github.com/PinkGold75/FSAB-Application.git'
+type 'cd FSAB-Application/dirp.io'
 type 'npm install' in the terminal
 then type 'npm run dev'
 open 'http://localhost:5173' in a web browser
