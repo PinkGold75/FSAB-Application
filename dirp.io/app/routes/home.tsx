@@ -15,12 +15,17 @@ function pickStudent({students, lastPicked}){
 	alert(chosen.name);
 	chosen.count++;
 }
-/**function StudentEntry({studentName, delete}){
+const ListStudents=({students, remove}) => {
 	return (
 	<>
-		<li key={studentName}>{studentName}<button onClick={delete(studentName)}>Remove Student</button></li>
+		<ul>
+			{students.map((student) =>
+				(<li key={student.id}>{student.name} {student.count}
+				<button onClick={() => remove(student.name)}>Remove Student</button>
+				</li>))}
+		</ul>
 	</>);
-}**/	
+}
 
 function StudentRecord(){
 	const [students, setStudents] = React.useState([]);
@@ -47,11 +52,9 @@ function StudentRecord(){
 	<>
 		<span><input type="text" value={name} onChange={e => setName(e.target.value)} /></span>
 		<span><button onClick={addStudent}>Add Student</button></span>
+		<br />
 		<span><button onClick={()=>pickStudent({students, lastPicked})}>Pick Student</button></span>
-		<ul>
-			{students.map((student) =>
-				(<li key={student.id}>{student.name} {student.count} <button onClick={() => delStudent(student.name)}>delete</button></li>))}
-		</ul>
+		<ListStudents students={students} remove={delStudent} />
 	</>);
 }
 export default function Home() {
