@@ -7,7 +7,7 @@ open the terminal and type 'git clone https://github.com/PinkGold75/FSAB-Applica
 type 'cd FSAB-Application/dirp.io'
 type 'npm install' in the terminal
 then type 'npm run dev'
-open 'http://localhost:5173' in a web browser
+open 'http://localhost:5173' in a web browser (note if you copy paste the link it might bring you to http://localhost:5173/home which will not work, to fix this delete the trailing 'home')
 
 Contributions:
 I wrote the react code (located in FSAB-Application/dirp.io/app/routes/home.tsx) mostly from scratch and I lightly edited the provided css template (FSAB-Application/dirp.io/app/app.css). I used the react router template provided at the following link: https://reactrouter.com/start/framework/installation#introduction
