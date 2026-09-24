@@ -10,7 +10,10 @@ export function meta({}: Route.MetaArgs) {
 }
 
 function pickStudent({list}){
-	
+	const validList=students.filter((student) => student.name != lastPicked);
+	chosen = validList[Math.floor(Math.random()*validList.length)];
+	alert(chosen.name);
+	chosen.count++;
 }
 /**function StudentEntry({studentName, delete}){
 	return (
@@ -42,13 +45,13 @@ function StudentRecord(){
 
 	function pickStudent(){
 		const validList=students.filter((student) => student.name != lastPicked);
-		alert(validList[Math.floor(Math.random()*validList.length)]);
+		alert(validList[Math.floor(Math.random()*validList.length)].name);
 	}
 
 	return (
 	<>
 		<input type="text" value={name} onChange={e => setName(e.target.value)} />
-		<button onClick={addStudent}>Add Student </button>
+		<button onClick={addStudent}>Add Student</button>
 		<button onClick={pickStudent}>Pick Student</button>
 		<ul>
 			{students.map((student) =>
