@@ -13,3 +13,11 @@ body {
     color-scheme: dark;
   }
 }
+button{
+	color: red;
+}
+input{
+	background-color:#f3f4f6;
+	color: black;
+	border: none;
+}

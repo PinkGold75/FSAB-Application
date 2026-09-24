@@ -43,11 +43,6 @@ function StudentRecord(){
 		setStudents(newRecord);
 	}
 
-	/**function pickStudent(){
-		const validList=students.filter((student) => student.name != lastPicked);
-		alert(validList[Math.floor(Math.random()*validList.length)].name);
-	}**/
-
 	return (
 	<>
 		<span><input type="text" value={name} onChange={e => setName(e.target.value)} /></span>
