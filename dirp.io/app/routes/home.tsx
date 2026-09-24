@@ -12,33 +12,47 @@ export function meta({}: Route.MetaArgs) {
 function pickStudent({list}){
 	
 }
-
-function studentEntry({student, students}){
-	
+/**function StudentEntry({studentName, delete}){
 	return (
 	<>
-		<li key={student}>{student}<button onClick={students}>delete</button></li>
+		<li key={studentName}>{studentName}<button onClick={delete(studentName)}>Remove Student</button></li>
 	</>);
-}	
+}**/	
 
 function StudentRecord(){
 	const [students, setStudents] = React.useState([]);
 	const [name, setName] = React.useState('');
+	let lastPicked;
 
 	function addStudent(){
-		const newRecord=students.concat(name);
+		if(name===""){
+			alert("Name cannnot be blank")
+			return;
+		}	
+
+		const newRecord=students.concat({id: name, name: name, count: 0});
 		setStudents(newRecord);
 		setName('');
 	}
 
-	function delStudent(studentID){
-		const newRecord=students.filter((student) => student.id !== studentID)
+	function delStudent(xstudent:string){
+		const newRecord=students.filter((student) => student.name !== xstudent);
+		setStudents(newRecord);
+	}
+
+	function pickStudent(){
+		const validList=students.filter((student) => student.name != lastPicked);
+		alert(validList[Math.floor(Math.random()*validList.length)]);
+	}
+
 	return (
 	<>
-		<button onClick={addStudent}>Add Student</button>
 		<input type="text" value={name} onChange={e => setName(e.target.value)} />
+		<button onClick={addStudent}>Add Student </button>
+		<button onClick={pickStudent}>Pick Student</button>
 		<ul>
-			{students.map((student)=> <li key={student}>{student}</li>)}
+			{students.map((student) =>
+				(<li key={student.id}>{student.name} {student.count} <button onClick={() => delStudent(student.name)}>delete</button></li>))}
 		</ul>
 	</>);
 }
